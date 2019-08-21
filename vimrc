@@ -8,6 +8,11 @@ Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+"make using plug easier
+map :PI :PlugInstall<CR>
+map :PC :PlugClean<CR>
+map :PU :PlugUpdate<CR>
+
 "setup monokai font
 syntax on
 colorscheme monokai
@@ -67,3 +72,25 @@ map! <M-RIGHT> <ESC>gta
 
 "map :: to opening vimrc (while in vim, alias vimrc to open ~/.vimrc in a bashrc)
 map :: :tabf ~/.vimrc<CR>
+
+"auto bracket creation (just moves cursor)
+inoremap () ()<LEFT>
+inoremap [] []<LEFT>
+inoremap {} {}<LEFT>
+inoremap '' ''<LEFT>
+inoremap "" ""<LEFT>
+inoremap `` ``<LEFT>
+inoremap <> <><LEFT>
+
+"auto block creation
+inoremap (<CR> (<CR><CR>)<UP><TAB>
+inoremap [<CR> [<CR><CR>]<UP><TAB>
+inoremap {<CR> {<CR><CR>}<UP><TAB>
+
+"maps for if/elseif/else auto complete, 9 is easier to type then (
+imap if9 if<SPACE>(<RIGHT>)<SPACE>{<CR><UP><END><LEFT><LEFT><LEFT>
+imap elseif9 else if9
+imap else9 else<SPACE>{<CR>
+
+"in python, auto indent after :<CR>
+inoremap :<CR> :<CR><TAB>
