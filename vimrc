@@ -1,7 +1,27 @@
+"to install vim-plug, follow instructions at https://github.com/junegunn/vim-plug/wiki/tutorial
+call plug#begin('~/.vim/plugged')
+
+Plug 'crusoexia/vim-monokai'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+"setup monokai font
+syntax on
+colorscheme monokai
+let g:monokai_term_italic = 0 "dont like italics
+
+"reccommended setting for git gutter
+set updatetime=100
+
+"map ; to FZF
+map ; :FZF<CR>
+
 "setup indents, file params, ruler, etc
 set binary
 set noeol
-syntax on
 set nowrap
 set number relativenumber
 set autoindent
