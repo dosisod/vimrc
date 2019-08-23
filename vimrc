@@ -32,6 +32,7 @@ set number relativenumber
 set autoindent
 set tabstop=4
 set softtabstop=4
+set shiftwidth=4
 set showcmd
 set wildmenu
 set scrolloff=2
@@ -94,3 +95,11 @@ imap else9 else<SPACE>{<CR>
 
 "in python, auto indent after :<CR>
 inoremap :<CR> :<CR><TAB>
+
+"makes quiting easier
+map :qq :q!<CR>
+map :Q :qa!<CR>
+map :WQ :wq<CR>
+map :Wq :wq<CR>
+map :wQ :wq<CR>
+map :W :w<CR>
