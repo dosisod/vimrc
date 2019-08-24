@@ -39,6 +39,10 @@ set scrolloff=2
 set lazyredraw
 filetype plugin indent off "disable tab options set by plugins
 
+"added possible paths for `gf` command
+set path=.,templates/,static/,,
+set suffixesadd=.py,.html,.js,.min.js
+
 "mark all extra whitespace as bright red
 hi Whitespace ctermbg=Red
 match Whitespace /^[^\r\n]\t*$/
@@ -114,3 +118,7 @@ map :WQ :wq<CR>
 map :Wq :wq<CR>
 map :wQ :wq<CR>
 map :W :w<CR>
+
+"enter works like J and backspace works like H, make them drop into insert mode instead
+map <BS> i<BS>
+map <CR> i<CR>
