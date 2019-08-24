@@ -83,6 +83,13 @@ inoremap "" ""<LEFT>
 inoremap `` ``<LEFT>
 inoremap <> <><LEFT>
 
+"used for jinja2 templates
+imap {% {%%}<LEFT><LEFT><SPACE><SPACE>
+imap {{ {}{}<SPACE><SPACE>
+
+"space space will add 2 spaces and move cursor over one
+inoremap <SPACE><SPACE> <SPACE><SPACE><LEFT>
+
 "auto block creation
 inoremap (<CR> (<CR><CR>)<UP><TAB>
 inoremap [<CR> [<CR><CR>]<UP><TAB>
