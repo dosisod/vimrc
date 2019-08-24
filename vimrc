@@ -9,9 +9,9 @@ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "make using plug easier
-map :PI :PlugInstall<CR>
-map :PC :PlugClean<CR>
-map :PU :PlugUpdate<CR>
+map :PI :PlugInstall
+map :PC :PlugClean
+map :PU :PlugUpdate
 
 "setup monokai font
 syntax on
@@ -110,6 +110,11 @@ imap else9 else<SPACE>{<CR>
 
 "in python, auto indent after :<CR>
 inoremap :<CR> :<CR><TAB>
+
+"makes saving easier
+"requires putting: "stty -ixon" into bashrc
+imap <C-S> <ESC>:w<CR>i
+map <C-S> :w<CR>
 
 "makes quiting easier
 map :qq :q!<CR>
