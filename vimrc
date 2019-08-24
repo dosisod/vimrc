@@ -39,6 +39,10 @@ set scrolloff=2
 set lazyredraw
 filetype plugin indent off "disable tab options set by plugins
 
+"mark all extra whitespace as bright red
+hi Whitespace ctermbg=Red
+match Whitespace /^[^\r\n]\t*$/
+
 "changes search functionality/colors
 set incsearch
 set hlsearch
