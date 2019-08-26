@@ -127,3 +127,9 @@ map :W :w<CR>
 "enter works like J and backspace works like H, make them drop into insert mode instead
 map <BS> i<BS>
 map <CR> i<CR>
+
+"bad habbits
+map <UP> <nop>
+map <DOWN> <nop>
+map <LEFT> <nop>
+map <RIGHT> <nop>
