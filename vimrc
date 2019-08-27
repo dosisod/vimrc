@@ -99,9 +99,11 @@ imap {{ {}{}<SPACE><SPACE>
 inoremap <SPACE><SPACE> <SPACE><SPACE><LEFT>
 
 "auto block creation
-inoremap (<CR> (<CR><CR>)<UP><TAB>
-inoremap [<CR> [<CR><CR>]<UP><TAB>
-inoremap {<CR> {<CR><CR>}<UP><TAB>
+inoremap (<CR> (<CR>)<ESC>O<TAB>
+inoremap [<CR> [<CR>]<ESC>O<TAB>
+inoremap {<CR> {<CR>}<ESC>O<TAB>
+
+inoremap #i<SPACE> #include<SPACE>
 
 "maps for if/elseif/else auto complete, 9 is easier to type then (
 imap if9 if<SPACE>(<RIGHT>)<SPACE>{<CR><UP><END><LEFT><LEFT><LEFT>
@@ -113,7 +115,7 @@ inoremap :<CR> :<CR><TAB>
 
 "makes saving easier
 "requires putting: "stty -ixon" into bashrc
-imap <C-S> <ESC>:w<CR>i
+imap <C-S> <ESC>:w<CR>
 map <C-S> :w<CR>
 
 "makes quiting easier
