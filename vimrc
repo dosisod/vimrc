@@ -103,6 +103,11 @@ inoremap (<CR> (<CR>)<ESC>O<TAB>
 inoremap [<CR> [<CR>]<ESC>O<TAB>
 inoremap {<CR> {<CR>}<ESC>O<TAB>
 
+"auto close bracket
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+
 imap #I<SPACE> #include<SPACE>
 imap #I<<SPACE> #include<SPACE><>
 imap #I"<SPACE> #include<SPACE>""
@@ -110,6 +115,7 @@ imap #I"<SPACE> #include<SPACE>""
 "maps for if/elseif/else auto complete, 9 is easier to type then (
 imap if9 if<SPACE>(<RIGHT>)<SPACE>{<CR><UP><END><LEFT><LEFT><LEFT>
 imap elseif9 else if9
+imap elif9 else if9
 imap else9 else<SPACE>{<CR>
 
 "in python, auto indent after :<CR>
