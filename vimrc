@@ -80,7 +80,9 @@ map <M-RIGHT> gt
 map! <M-RIGHT> <ESC>gta
 
 "map :: to opening vimrc (while in vim, alias vimrc to open ~/.vimrc in a bashrc)
+" `` opens bashrc
 map :: :tabf ~/.vimrc<CR>
+map `` :tabf ~/.bashrc<CR>
 
 "auto bracket creation (just moves cursor)
 inoremap () ()<LEFT>
