@@ -138,6 +138,12 @@ map :W :w<CR>
 map <BS> i<BS>
 map <CR> i<CR>
 
+"switch between buffers easily
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+
 "bad habbits
 map <UP> <nop>
 map <DOWN> <nop>
