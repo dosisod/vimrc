@@ -43,10 +43,6 @@ filetype plugin indent off "disable tab options set by plugins
 set path=.,templates/,static/,,
 set suffixesadd=.py,.html,.js,.min.js
 
-"mark all extra whitespace as bright red
-hi Whitespace ctermbg=Red
-match Whitespace /^[^\r\n]\t*$/
-
 "changes search functionality/colors
 set incsearch
 set hlsearch
@@ -135,6 +131,11 @@ map :WQ :wq<CR>
 map :Wq :wq<CR>
 map :wQ :wq<CR>
 map :W :w<CR>
+
+inoremap <A-HOME> <ESC>v<HOME>
+map <A-HOME> v<HOME>
+inoremap <A-END> <ESC>v<END>
+map <A-END> v<END>
 
 "enter works like J and backspace works like H, make them drop into insert mode instead
 map <BS> i<BS>
