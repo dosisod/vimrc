@@ -119,6 +119,15 @@ imap else9 else<SPACE>{<CR>
 "in python, auto indent after :<CR>
 inoremap :<CR> :<CR><TAB>
 
+"below copied from:
+"https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+"https://github.com/maralla/completor.vim
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
 "makes saving easier
 "requires putting: "stty -ixon" into bashrc
 imap <C-S> <ESC>:w<CR>
