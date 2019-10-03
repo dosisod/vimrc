@@ -5,6 +5,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -23,6 +24,9 @@ set updatetime=100
 
 "map ; to FZF
 map ; :FZF<CR>
+
+"enable when using base16 fonts
+let base16colorspace=16
 
 "setup indents, file params, ruler, etc
 set binary
@@ -125,7 +129,7 @@ inoremap :<CR> :<CR><TAB>
 set completeopt=longest,menuone
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 "makes saving easier
@@ -141,14 +145,22 @@ map :Wq :wq<CR>
 map :wQ :wq<CR>
 map :W :w<CR>
 
+"allows for shift+home like capabilities
 inoremap <A-HOME> <ESC>v<HOME>
 map <A-HOME> v<HOME>
 inoremap <A-END> <ESC>v<END>
 map <A-END> v<END>
 
+"make it so text deletion at EOL in v mode is cut correctly
+vnoremap <expr> d col(".") == col("$")-1 ? "yd$" : "d"
+
 "enter works like J and backspace works like H, make them drop into insert mode instead
-map <BS> i<BS>
-map <CR> i<CR>
+noremap <BS> i<BS>
+noremap <CR> i<CR>
+
+"hitting tab when in normal/command mode will insert a tab at the start of the line
+noremap <TAB> I<TAB><ESC>
+noremap <S-TAB> <<
 
 "switch between buffers easily
 nnoremap <C-J> <C-W>j
