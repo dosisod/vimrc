@@ -92,6 +92,7 @@ inoremap '' ''<LEFT>
 inoremap "" ""<LEFT>
 inoremap `` ``<LEFT>
 inoremap <> <><LEFT>
+inoremap ~~ ``````<LEFT><LEFT><LEFT>
 
 "used for jinja2 templates
 imap {% {%%}<LEFT><LEFT><SPACE><SPACE>
@@ -113,6 +114,7 @@ inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 imap #I<SPACE> #include<SPACE>
 imap #I<<SPACE> #include<SPACE><>
 imap #I"<SPACE> #include<SPACE>""
+iabbrev MM <<
 
 "maps for if/elseif/else auto complete, 9 is easier to type then (
 imap if9 if<SPACE>(<RIGHT>)<SPACE>{<CR><UP><END><LEFT><LEFT><LEFT>
