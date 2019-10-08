@@ -158,7 +158,7 @@ vnoremap <expr> d col(".") == col("$")-1 ? "yd$" : "d"
 
 "enter works like J and backspace works like H, make them drop into insert mode instead
 noremap <BS> i<BS>
-noremap <CR> i<CR>
+noremap <expr> <CR> col(".") == col("$")-1 ? "o" : "i<CR>"
 
 "hitting tab when in normal/command mode will insert a tab at the start of the line
 noremap <TAB> I<TAB><ESC>
