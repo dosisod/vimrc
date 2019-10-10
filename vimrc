@@ -43,6 +43,10 @@ set scrolloff=2
 set lazyredraw
 filetype plugin indent off "disable tab options set by plugins
 
+if has('unnamedplus')
+	set clipboard=unnamed,unnamedplus
+endif
+
 "added possible paths for `gf` command
 set path=.,templates/,static/,,
 set suffixesadd=.py,.html,.js,.min.js
