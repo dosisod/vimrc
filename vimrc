@@ -83,10 +83,10 @@ map! <M-LEFT> <ESC>gTa
 map <M-RIGHT> gt
 map! <M-RIGHT> <ESC>gta
 
-"map :: to opening vimrc (while in vim, alias vimrc to open ~/.vimrc in a bashrc)
-" `` opens bashrc
+"map :: to opening vimrc while in vim (do `alias vimrc="vim ~/.vimrc"` in your .bashrc as well)
+"~~ opens bashrc
 map :: :tabf ~/.vimrc<CR>
-map `` :tabf ~/.bashrc<CR>
+map ~~ :tabf ~/.bashrc<CR>
 
 "auto bracket creation (just moves cursor)
 inoremap () ()<LEFT>
@@ -163,6 +163,9 @@ vnoremap <expr> d col(".") == col("$")-1 ? "yd$" : "d"
 "enter works like J and backspace works like H, make them drop into insert mode instead
 noremap <BS> i<BS>
 noremap <expr> <CR> col(".") == col("$")-1 ? "o" : "i<CR>"
+
+"marking m (mm) allows for jumping to last mark easy (``)
+nnoremap mm m`
 
 "hitting tab when in normal/command mode will insert a tab at the start of the line
 noremap <TAB> I<TAB><ESC>
