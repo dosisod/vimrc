@@ -177,6 +177,9 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
+"hitting K instead of k is annoying
+map K k
+
 "bad habbits
 map <UP> <nop>
 map <DOWN> <nop>
