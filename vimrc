@@ -29,6 +29,7 @@ map ; :FZF<CR>
 let base16colorspace=16
 
 "setup indents, file params, ruler, etc
+set nocompatible
 set binary
 set noeol
 set nowrap
