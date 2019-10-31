@@ -22,8 +22,8 @@ let g:monokai_term_italic = 0 "dont like italics
 "reccommended setting for git gutter
 set updatetime=100
 
-"map ; to FZF
-map ; :FZF<CR>
+"map <SPACE> to FZF
+nnoremap <SPACE> :FZF<CR>
 
 "enable when using base16 fonts
 let base16colorspace=16
@@ -56,6 +56,8 @@ set suffixesadd=.py,.html,.js,.min.js
 set incsearch
 set hlsearch
 nnoremap <ESC><ESC> :noh<CR><ESC>
+
+map :tabmm<CR> :tabm 0<CR>
 
 "using F keys switches tabs in all modes
 "when switching in insert mode, you stay in insert mode
