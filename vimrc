@@ -44,6 +44,7 @@ set scrolloff=2
 set lazyredraw
 filetype plugin indent off "disable tab options set by plugins
 
+"add clipboard capabilities if available
 if has('unnamedplus')
 	set clipboard=unnamed,unnamedplus
 endif
@@ -55,7 +56,15 @@ set suffixesadd=.py,.html,.js,.min.js
 "changes search functionality/colors
 set incsearch
 set hlsearch
-nnoremap <ESC><ESC> :noh<CR><ESC>
+
+"automatically disable cursorline and highlighting with ESC ESC
+nnoremap <ESC><ESC> :set nocursorline<CR>:noh<CR><ESC>
+
+"automatically enable cursor line when searching for something
+nnoremap / :set cursorline<CR>/
+nnoremap ? :set cursorline<CR>?
+nnoremap n :set cursorline<CR>n
+nnoremap N :set cursorline<CR>N
 
 map :tabmm<CR> :tabm 0<CR>
 
