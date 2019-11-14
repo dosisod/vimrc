@@ -177,7 +177,7 @@ noremap <BS> i<BS>
 noremap <expr> <CR> col(".") == col("$")-1 ? "o" : "i<CR>"
 
 "marking m (mm) allows for jumping to last mark easy (``)
-nnoremap mm m`
+nnoremap `` `m
 
 "hitting tab when in normal/command mode will insert a tab at the start of the line
 noremap <TAB> I<TAB><ESC>
