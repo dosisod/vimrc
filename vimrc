@@ -29,6 +29,8 @@ nnoremap <SPACE> :FZF<CR>
 "enable when using base16 fonts
 let base16colorspace=16
 
+autocmd BufNewFile,BufRead *.ts set syntax=javascript
+
 "setup indents, file params, ruler, etc
 set nocompatible
 set binary
@@ -170,6 +172,9 @@ map <A-HOME> v<HOME>
 inoremap <A-END> <ESC>v<END>
 map <A-END> v<END>
 
+"make deleting things easier
+nnoremap :D<CR> :%d<CR>
+
 "make it so text deletion at EOL in v mode is cut correctly
 vnoremap <expr> d col(".") == col("$")-1 ? "yd$" : "d"
 
@@ -184,6 +189,9 @@ nnoremap `` `m
 noremap <TAB> I<TAB><ESC>
 noremap <S-TAB> <<
 
+"make centering buffer easier
+inoremap zzz <ESC>zzi
+
 "switch between buffers easily
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
@@ -192,6 +200,9 @@ nnoremap <C-H> <C-W>h
 
 "hitting K instead of k is annoying
 map K k
+
+"makes sourcing vimrc easier
+nnoremap :S<CR> :source ~/.vimrc<CR>
 
 "bad habbits
 map <UP> <nop>
