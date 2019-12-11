@@ -7,6 +7,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'bling/vim-bufferline'
 
 call plug#end()
 
@@ -73,30 +74,36 @@ map :tabmm<CR> :tabm 0<CR>
 
 "using F keys switches tabs in all modes
 "when switching in insert mode, you stay in insert mode
-map <F1> 1gt
-map! <F1> <ESC>1gta
-map <F2> 2gt
-map! <F2> <ESC>2gta
-map <F3> 3gt
-map! <F3> <ESC>3gta
-map <F4> 4gt
-map! <F4> <ESC>4gta
-map <F5> 5gt
-map! <F5> <ESC>5gta
-map <F6> 6gt
-map! <F6> <ESC>6gta
-map <F7> 7gt
-map! <F7> <ESC>7gta
-map <F8> 8gt
-map! <F8> <ESC>8gta
-map <F9> 9gt
-map! <F9> <ESC>9gta
+map <F1> :b1<CR>
+map! <F1> <ESC>:b1<CR>a
+map <F2> :b2<CR>
+map! <F2> <ESC>:b2<CR>a
+map <F3> :b3<CR>
+map! <F3> <ESC>:b3<CR>a
+map <F4> :b4<CR>
+map! <F4> <ESC>:b4<CR>a
+map <F5> :b5<CR>
+map! <F5> <ESC>:b5<CR>a
+map <F6> :b6<CR>
+map! <F6> <ESC>:b6<CR>a
+map <F7> :b7<CR>
+map! <F7> <ESC>:b7<CR>a
+map <F8> :b8<CR>
+map! <F8> <ESC>:b8<CR>a
+map <F9> :b9<CR>
+map! <F9> <ESC>:b9<CR>a
 
-"add ALT LFT and ALT RIGHT to move one tab left/right
+"ALT LEFT and ALT RIGHT to move one tab left/right
 map <M-LEFT> gT
 map! <M-LEFT> <ESC>gTa
 map <M-RIGHT> gt
 map! <M-RIGHT> <ESC>gta
+
+"ALT UP and ALT DOWN to switch up and down buffers
+map <M-UP> :bp<CR>
+map! <M-UP> <ESC>:bp<CR>a
+map <M-DOWN> :bn<CR>
+map! <M-DOWN> <ESC>:bn<CR>a
 
 "map :: to opening vimrc while in vim (do `alias vimrc="vim ~/.vimrc"` in your .bashrc as well)
 "~~ opens bashrc
