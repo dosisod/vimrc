@@ -105,6 +105,9 @@ map! <M-UP> <ESC>:bp<CR>a
 map <M-DOWN> :bn<CR>
 map! <M-DOWN> <ESC>:bn<CR>a
 
+"makes :EE open a replace current buffer with different one
+map :EE<CR> :enew\|bd#<CR>
+
 "map :: to opening vimrc while in vim (do `alias vimrc="vim ~/.vimrc"` in your .bashrc as well)
 "~~ opens bashrc
 map :: :tabf ~/.vimrc<CR>
