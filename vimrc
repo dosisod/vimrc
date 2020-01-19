@@ -28,11 +28,26 @@ set updatetime=100
 nnoremap <SPACE> :FZF<CR>
 
 "enable when using base16 fonts
-let base16colorspace=16
+"let base16colorspace=16
+
+"bufferline settings
+let g:bufferline_active_buffer_left='['
+let g:bufferline_active_buffer_right=']'
+let g:bufferline_active_highlight='Search'
+let g:bufferline_rotate=1
+let g:bufferline_fixed_index=0
+let g:bufferline_separator=' '
+
+"fixes bufferline breaking when too long
+set noruler
 
 autocmd BufNewFile,BufRead *.ts set syntax=javascript
 
-"setup indents, file params, ruler, etc
+"setup splits
+set splitbelow
+set splitright
+
+"setup indents, file params, etc
 set nocompatible
 set binary
 set noeol
@@ -114,21 +129,21 @@ map :: :tabf ~/.vimrc<CR>
 map ~~ :tabf ~/.bashrc<CR>
 
 "auto bracket creation (just moves cursor)
-inoremap () ()<LEFT>
-inoremap [] []<LEFT>
-inoremap {} {}<LEFT>
-inoremap '' ''<LEFT>
-inoremap "" ""<LEFT>
-inoremap `` ``<LEFT>
-inoremap <> <><LEFT>
-inoremap ~~ ``````<LEFT><LEFT><LEFT>
+"inoremap () ()<LEFT>
+"inoremap [] []<LEFT>
+"inoremap {} {}<LEFT>
+"inoremap '' ''<LEFT>
+"inoremap "" ""<LEFT>
+"inoremap `` ``<LEFT>
+"inoremap <> <><LEFT>
+"inoremap ~~ ``````<LEFT><LEFT><LEFT>
 
 "used for jinja2 templates
-imap {% {%%}<LEFT><LEFT><SPACE><SPACE>
-imap {{ {}{}<SPACE><SPACE>
+inoremap {% {%%}<LEFT><LEFT><SPACE><LEFT><SPACE>
+inoremap {{ {{}}<LEFT><LEFT><SPACE><LEFT><SPACE>
 
 "space space will add 2 spaces and move cursor over one
-inoremap <SPACE><SPACE> <SPACE><SPACE><LEFT>
+"inoremap <SPACE><SPACE> <SPACE><SPACE><LEFT>
 
 "auto block creation
 inoremap (<CR> (<CR>)<ESC>O<TAB>
@@ -200,13 +215,18 @@ noremap <TAB> I<TAB><ESC>
 noremap <S-TAB> <<
 
 "make centering buffer easier
-inoremap zzz <ESC>zzi
+inoremap zzz <ESC>zza
 
 "switch between buffers easily
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+
+nnoremap <silent> <C-S-LEFT> <C-W><
+nnoremap <silent> <C-S-RIGHT> <C-W>>
+nnoremap <silent> <C-S-UP> <C-W>+
+nnoremap <silent> <C-S-DOWN> <C-W>-
 
 "hitting K instead of k is annoying
 map K k
