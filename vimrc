@@ -8,6 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'bling/vim-bufferline'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -146,9 +147,9 @@ inoremap {{ {{}}<LEFT><LEFT><SPACE><LEFT><SPACE>
 "inoremap <SPACE><SPACE> <SPACE><SPACE><LEFT>
 
 "auto block creation
-inoremap (<CR> (<CR>)<ESC>O<TAB>
-inoremap [<CR> [<CR>]<ESC>O<TAB>
-inoremap {<CR> {<CR>}<ESC>O<TAB>
+inoremap {<CR> {<CR><TAB><END><CR><BS>}<ESC>kI
+inoremap (<CR> (<CR><TAB><END><CR><BS>)<ESC>kI
+inoremap [<CR> [<CR><TAB><END><CR><BS>]<ESC>kI
 
 "auto close bracket
 inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
@@ -233,6 +234,17 @@ map K k
 
 "makes sourcing vimrc easier
 nnoremap :S<CR> :source ~/.vimrc<CR>
+
+cabbrev spaces set tabstop=8 shiftwidth=4 softtabstop=4
+
+"hitting j/k at top and bottom of buffer goes to EOL or SOL
+nnoremap <expr> j (line(".")==line("$")) ? "$" : "j"
+inoremap <expr> <DOWN> (line(".")==line("$")) ? "<END>" : "<DOWN>"
+nnoremap <expr> k (line(".")==1) ? "^" : "k"
+inoremap <expr> <UP> (line(".")==1) ? "<HOME>" : "<UP>"
+
+inoremap <expr> <LEFT> (col(".")==1) ? "<UP><END>" : "<LEFT>"
+inoremap <expr> <RIGHT> (col(".")==col("$")) ? "<DOWN><HOME>" : "<RIGHT>"
 
 "bad habbits
 map <UP> <nop>
