@@ -77,6 +77,13 @@ set suffixesadd=.py,.html,.js,.min.js
 set incsearch
 set hlsearch
 
+"whitespace highlighters
+hi NoWhitespace term=standout cterm=standout ctermfg=196 ctermbg=234
+hi SpecialKey term=bold ctermfg=237
+match noWhitespace '\s\+$'
+set listchars=tab:→\ 
+set list
+
 "automatically disable cursorline and highlighting with ESC ESC
 nnoremap <ESC><ESC> :set nocursorline<CR>:noh<CR><ESC>
 
