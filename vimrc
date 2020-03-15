@@ -43,6 +43,7 @@ let g:bufferline_separator=' '
 set noruler
 
 autocmd BufNewFile,BufRead *.ts set syntax=javascript
+autocmd BufNewFile,BufRead *.pyi set syntax=python
 
 "setup splits
 set splitbelow
