@@ -7,15 +7,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'bling/vim-bufferline'
+"Plug 'bling/vim-bufferline'
 Plug 'tpope/vim-surround'
 
 call plug#end()
 
 "make using plug easier
-map :PI :PlugInstall
-map :PC :PlugClean
-map :PU :PlugUpdate
+cabbrev PI PlugInstall
+cabbrev PC PlugClean
+cabbrev PU PlugUpdate
 
 "setup monokai font
 syntax on
@@ -94,9 +94,9 @@ nnoremap ? :set cursorline<CR>?
 nnoremap n :set cursorline<CR>n
 nnoremap N :set cursorline<CR>N
 
-map :tabmm<CR> :tabm 0<CR>
+cabbrev tabmm tabm 0
 
-"using F keys switches tabs in all modes
+"using F keys switches buffers in all modes
 "when switching in insert mode, you stay in insert mode
 map <F1> :b1<CR>
 map! <F1> <ESC>:b1<CR>a
@@ -120,8 +120,10 @@ map! <F9> <ESC>:b9<CR>a
 "ALT LEFT and ALT RIGHT to move one tab left/right
 map <M-LEFT> gT
 map! <M-LEFT> <ESC>gTa
+tmap <ESC>[1;3D <C-W>:tabp<CR>
 map <M-RIGHT> gt
 map! <M-RIGHT> <ESC>gta
+tmap <ESC>[1;3C <C-W>:tabn<CR>
 
 "ALT UP and ALT DOWN to switch up and down buffers
 map <M-UP> :bp<CR>
@@ -129,12 +131,8 @@ map! <M-UP> <ESC>:bp<CR>a
 map <M-DOWN> :bn<CR>
 map! <M-DOWN> <ESC>:bn<CR>a
 
-"makes :EE open a replace current buffer with different one
-map :EE<CR> :enew\|bd#<CR>
-
-"map :: to opening vimrc while in vim (do `alias vimrc="vim ~/.vimrc"` in your .bashrc as well)
-"~~ opens bashrc
-map :: :tabf ~/.vimrc<CR>
+"open vimrc/bashrc from inside vim
+map :; :tabf ~/.vimrc<CR>
 map ~~ :tabf ~/.bashrc<CR>
 
 "auto bracket creation (just moves cursor)
@@ -170,10 +168,10 @@ imap #I"<SPACE> #include<SPACE>""
 iabbrev MM <<
 
 "maps for if/elseif/else auto complete, 9 is easier to type then (
-imap if9 if<SPACE>(<RIGHT>)<SPACE>{<CR><UP><END><LEFT><LEFT><LEFT>
-imap elseif9 else if9
-imap elif9 else if9
-imap else9 else<SPACE>{<CR>
+"imap if9 if<SPACE>(<RIGHT>)<SPACE>{<CR><UP><END><LEFT><LEFT><LEFT>
+"imap elseif9 else if9
+"imap elif9 else if9
+"imap else9 else<SPACE>{<CR>
 
 "in python, auto indent after :<CR>
 inoremap :<CR> :<CR><TAB>
@@ -207,7 +205,7 @@ inoremap <A-END> <ESC>v<END>
 map <A-END> v<END>
 
 "make deleting things easier
-nnoremap :D<CR> :%d<CR>
+"map :D :%d
 
 "make it so text deletion at EOL in v mode is cut correctly
 vnoremap <expr> d col(".") == col("$")-1 ? "yd$" : "d"
@@ -217,7 +215,8 @@ noremap <BS> i<BS>
 noremap <expr> <CR> col(".") == col("$")-1 ? "o" : "i<CR>"
 
 "marking m (mm) allows for jumping to last mark easy (``)
-nnoremap `` `m
+"nnoremap `` `m
+"nnoremap '' `.
 
 "hitting tab when in normal/command mode will insert a tab at the start of the line
 noremap <TAB> I<TAB><ESC>
@@ -231,19 +230,30 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+tnoremap <C-J> <C-W>j
+tnoremap <C-K> <C-W>k
+tnoremap <C-L> <C-W>l
+tnoremap <C-H> <C-W>h
 
 nnoremap <silent> <C-S-LEFT> <C-W><
 nnoremap <silent> <C-S-RIGHT> <C-W>>
 nnoremap <silent> <C-S-UP> <C-W>+
 nnoremap <silent> <C-S-DOWN> <C-W>-
+tnoremap <silent> <C-S-LEFT> <C-W><
+tnoremap <silent> <C-S-RIGHT> <C-W>>
+tnoremap <silent> <C-S-UP> <C-W>+
+tnoremap <silent> <C-S-DOWN> <C-W>-
+
+nnoremap <C-@> :ter ++close ++rows=10<CR>
+nnoremap `` :ter ++close ++curwin<CR>
 
 "hitting K instead of k is annoying
 map K k
 
 "makes sourcing vimrc easier
-nnoremap :S<CR> :source ~/.vimrc<CR>
+command! S source ~/.vimrc
 
-cabbrev spaces set tabstop=8 shiftwidth=4 softtabstop=4
+command! Spaces set tabstop=8 shiftwidth=4 softtabstop=4
 
 "hitting j/k at top and bottom of buffer goes to EOL or SOL
 nnoremap <expr> j (line(".")==line("$")) ? "$" : "j"
