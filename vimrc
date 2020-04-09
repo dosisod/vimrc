@@ -8,6 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'bling/vim-bufferline'
+Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-surround'
 
 call plug#end()
@@ -26,7 +27,8 @@ let g:monokai_term_italic = 0 "dont like italics
 set updatetime=100
 
 "map <SPACE> to FZF
-nnoremap <SPACE> :FZF<CR>
+nnoremap <SPACE> :GFiles<CR>
+inoremap <C-@> <C-N><C-N>
 
 "enable when using base16 fonts
 "let base16colorspace=16
@@ -244,8 +246,9 @@ tnoremap <silent> <C-S-RIGHT> <C-W>>
 tnoremap <silent> <C-S-UP> <C-W>+
 tnoremap <silent> <C-S-DOWN> <C-W>-
 
-nnoremap <C-@> :ter ++close ++rows=10<CR>
+"nnoremap <C-@> :ter ++close ++rows=10<CR>
 nnoremap `` :ter ++close ++curwin<CR>
+tnoremap <ESC> <C-W>
 
 "hitting K instead of k is annoying
 map K k
@@ -253,7 +256,8 @@ map K k
 "makes sourcing vimrc easier
 command! S source ~/.vimrc
 
-command! Spaces set tabstop=8 shiftwidth=4 softtabstop=4
+command! Spaces4 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+command! Spaces2 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 "hitting j/k at top and bottom of buffer goes to EOL or SOL
 nnoremap <expr> j (line(".")==line("$")) ? "$" : "j"
