@@ -7,9 +7,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
-"Plug 'bling/vim-bufferline'
 Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-surround'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'takac/vim-hardtime'
 
 call plug#end()
 
@@ -23,26 +24,22 @@ syntax on
 colorscheme monokai
 let g:monokai_term_italic = 0 "dont like italics
 
+"set background=light
+"colorscheme PaperColor
+
 "reccommended setting for git gutter
 set updatetime=100
 
 "map <SPACE> to FZF
-nnoremap <SPACE> :GFiles<CR>
+nnoremap <SPACE> :FZF<CR>
 inoremap <C-@> <C-N><C-N>
 
 "enable when using base16 fonts
 "let base16colorspace=16
 
-"bufferline settings
-let g:bufferline_active_buffer_left='['
-let g:bufferline_active_buffer_right=']'
-let g:bufferline_active_highlight='Search'
-let g:bufferline_rotate=1
-let g:bufferline_fixed_index=0
-let g:bufferline_separator=' '
-
-"fixes bufferline breaking when too long
-set noruler
+"enable hardmode
+let g:hardtime_default_on = 1
+let g:hardtime_timeout = 500
 
 autocmd BufNewFile,BufRead *.ts set syntax=javascript
 autocmd BufNewFile,BufRead *.pyi set syntax=python
@@ -65,6 +62,8 @@ set showcmd
 set wildmenu
 set scrolloff=2
 set lazyredraw
+set ignorecase
+set smartcase
 filetype plugin indent off "disable tab options set by plugins
 
 "add clipboard capabilities if available
@@ -85,10 +84,11 @@ hi NoWhitespace term=standout cterm=standout ctermfg=196 ctermbg=234
 hi SpecialKey term=bold ctermfg=237
 match noWhitespace '\s\+$'
 set listchars=tab:→\ 
+set fillchars=vert:│
 set list
 
 "automatically disable cursorline and highlighting with ESC ESC
-nnoremap <ESC><ESC> :set nocursorline<CR>:noh<CR><ESC>
+"nnoremap <ESC><ESC> :set nocursorline<CR>:noh<CR><ESC>
 
 "automatically enable cursor line when searching for something
 nnoremap / :set cursorline<CR>/
@@ -134,8 +134,8 @@ map <M-DOWN> :bn<CR>
 map! <M-DOWN> <ESC>:bn<CR>a
 
 "open vimrc/bashrc from inside vim
-map :; :tabf ~/.vimrc<CR>
-map ~~ :tabf ~/.bashrc<CR>
+map :; :sp ~/.vimrc<CR>
+map ~~ :sp ~/.bashrc<CR>
 
 "auto bracket creation (just moves cursor)
 "inoremap () ()<LEFT>
