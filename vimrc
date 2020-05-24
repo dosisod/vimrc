@@ -10,36 +10,29 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'embear/vim-localvimrc'
 Plug 'tpope/vim-surround'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'takac/vim-hardtime'
 
 call plug#end()
 
-"make using plug easier
-cabbrev PI PlugInstall
-cabbrev PC PlugClean
-cabbrev PU PlugUpdate
+"make using Plug easier
+command! PI PlugInstall
+command! PC PlugClean
+command! PU PlugUpdate
 
-"setup monokai font
 syntax on
-colorscheme monokai
-let g:monokai_term_italic = 0 "dont like italics
 
-"set background=light
-"colorscheme PaperColor
+"colorscheme monokai
+"let g:monokai_term_italic = 0 "dont like italics
 
-"reccommended setting for git gutter
-set updatetime=100
-
-"map <SPACE> to FZF
-nnoremap <SPACE> :FZF<CR>
-inoremap <C-@> <C-N><C-N>
+set background=light
+colorscheme PaperColor
 
 "enable when using base16 fonts
 "let base16colorspace=16
 
-"enable hardmode
-let g:hardtime_default_on = 1
-let g:hardtime_timeout = 500
+set updatetime=100
+
+nnoremap <SPACE> :FZF<CR>
+inoremap <C-@> <C-N><C-N>
 
 autocmd BufNewFile,BufRead *.ts set syntax=javascript
 autocmd BufNewFile,BufRead *.pyi set syntax=python
@@ -48,7 +41,7 @@ autocmd BufNewFile,BufRead *.pyi set syntax=python
 set splitbelow
 set splitright
 
-"setup indents, file params, etc
+"sane defaults
 set nocompatible
 set binary
 set noeol
@@ -83,20 +76,15 @@ set hlsearch
 hi NoWhitespace term=standout cterm=standout ctermfg=196 ctermbg=234
 hi SpecialKey term=bold ctermfg=237
 match noWhitespace '\s\+$'
-set listchars=tab:→\ 
+set listchars=tab:__
 set fillchars=vert:│
 set list
-
-"automatically disable cursorline and highlighting with ESC ESC
-"nnoremap <ESC><ESC> :set nocursorline<CR>:noh<CR><ESC>
 
 "automatically enable cursor line when searching for something
 nnoremap / :set cursorline<CR>/
 nnoremap ? :set cursorline<CR>?
 nnoremap n :set cursorline<CR>n
 nnoremap N :set cursorline<CR>N
-
-cabbrev tabmm tabm 0
 
 "using F keys switches buffers in all modes
 "when switching in insert mode, you stay in insert mode
@@ -164,19 +152,10 @@ inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
 inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 
-imap #I<SPACE> #include<SPACE>
-imap #I<<SPACE> #include<SPACE><>
-imap #I"<SPACE> #include<SPACE>""
 iabbrev MM <<
 
-"maps for if/elseif/else auto complete, 9 is easier to type then (
-"imap if9 if<SPACE>(<RIGHT>)<SPACE>{<CR><UP><END><LEFT><LEFT><LEFT>
-"imap elseif9 else if9
-"imap elif9 else if9
-"imap else9 else<SPACE>{<CR>
-
 "in python, auto indent after :<CR>
-inoremap :<CR> :<CR><TAB>
+"inoremap :<CR> :<CR><TAB>
 
 "below copied from:
 "https://vim.fandom.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
@@ -189,7 +168,7 @@ inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 "makes saving easier
 "requires putting: "stty -ixon" into bashrc
-imap <C-S> <ESC>:w<CR>
+imap <C-S> <ESC>:w<CR>a
 map <C-S> :w<CR>
 
 "makes quiting easier
@@ -199,26 +178,17 @@ map :WQ :wq<CR>
 map :Wq :wq<CR>
 map :wQ :wq<CR>
 map :W :w<CR>
+map :ew :w<CR>
 
 "allows for shift+home like capabilities
 inoremap <A-HOME> <ESC>v<HOME>
 map <A-HOME> v<HOME>
-inoremap <A-END> <ESC>v<END>
-map <A-END> v<END>
-
-"make deleting things easier
-"map :D :%d
-
-"make it so text deletion at EOL in v mode is cut correctly
-vnoremap <expr> d col(".") == col("$")-1 ? "yd$" : "d"
+inoremap <A-END> <ESC>v<END>h
+map <A-END> v<END>h
 
 "enter works like J and backspace works like H, make them drop into insert mode instead
 noremap <BS> i<BS>
 noremap <expr> <CR> col(".") == col("$")-1 ? "o" : "i<CR>"
-
-"marking m (mm) allows for jumping to last mark easy (``)
-"nnoremap `` `m
-"nnoremap '' `.
 
 "hitting tab when in normal/command mode will insert a tab at the start of the line
 noremap <TAB> I<TAB><ESC>
@@ -246,7 +216,6 @@ tnoremap <silent> <C-S-RIGHT> <C-W>>
 tnoremap <silent> <C-S-UP> <C-W>+
 tnoremap <silent> <C-S-DOWN> <C-W>-
 
-"nnoremap <C-@> :ter ++close ++rows=10<CR>
 nnoremap `` :ter ++close ++curwin<CR>
 tnoremap <ESC> <C-W>
 
